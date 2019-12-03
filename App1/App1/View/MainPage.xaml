@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewmodel="clr-namespace:App1.ViewModel"
+             mc:Ignorable="d"
+             x:Class="App1.MainPage">
+
+    <ContentPage.BindingContext>
+        <viewmodel:MainPageViewModel/>
+    </ContentPage.BindingContext>
+      
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="0.1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>        
+
+        <Image Source="" BackgroundColor="WhiteSmoke" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" />
+
+        <Button Grid.Row="1" Grid.Column="1" Text="REZERVOVAT"  BackgroundColor="#F9AA33" CornerRadius="10" BorderWidth="2" VerticalOptions="Center" Margin="5" Command="{Binding AddRezervaceCMD}"/>
+
+        <ListView x:Name="lvRezervace" ItemsSource="{Binding Rezervace}"/>
+
+
+    </Grid>
+
+    
+
+
+</ContentPage>

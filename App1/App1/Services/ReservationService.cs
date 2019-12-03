@@ -18,14 +18,14 @@ namespace App1.Services
 
     public class ReservationService
     {
-        protected async Task<ObservableCollection<Reservation>> GetReservationsAsync()
+        public ObservableCollection<Reservation> GetReservationsAsync()
         {
-            await Task.Delay(500);
+            //await Task.Delay(500);
             String text = "";
 
             ObservableCollection<Reservation> rezervace = new ObservableCollection<Reservation>();
 
-            var dataFilePath = $@"Data/Reservations.json";
+            var dataFilePath = $@"Data/Reservations.txt";
             if (!File.Exists(dataFilePath)) return rezervace;
 
             text = File.ReadAllText(dataFilePath);

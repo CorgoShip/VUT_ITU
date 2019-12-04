@@ -36,6 +36,7 @@ namespace App1.ViewModel
             seznamAut = new ObservableCollection<string>();            
             //seznamRezervaci = GetReservationsAsync();
 
+
             seznamAut.Add("Oktavka");
             seznamAut.Add("Lambo");
             seznamAut.Add("Nafta");
@@ -48,6 +49,15 @@ namespace App1.ViewModel
             temp.Vehicle = "Lexus";
 
             seznamRezervaci.Add(temp);
+
+            temp.Date = "4.12.1998";
+            temp.Name = "Nova cesta2";
+            temp.Time = "18:21";
+            temp.Type = "Kontrola Serveru";
+            temp.Vehicle = "Lambo";
+
+            seznamRezervaci.Add(temp);
+            //seznamRezervaci.
         }
     }
 }

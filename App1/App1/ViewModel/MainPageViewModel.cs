@@ -42,13 +42,13 @@ namespace App1.ViewModel
             seznamAut.Add("Nafta");
 
             Reservation temp = new Reservation();
-            temp.Date = "15.41.1447";
+            temp.Date = "15.41.1447"; // simulovana prnvni rezervace
             temp.Name = "Rychla cesta";
             temp.Time = "14:54";
             temp.Type = "Oprava";
             temp.Vehicle = "Lexus";
 
-            seznamRezervaci.Add(temp);
+            seznamRezervaci.Add(temp); // simulovana druha drzervace 
 
             temp.Date = "4.12.1998";
             temp.Name = "Nova cesta2";

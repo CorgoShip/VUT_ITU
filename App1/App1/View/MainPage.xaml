@@ -5,18 +5,16 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:viewmodel="clr-namespace:App1.ViewModel"
              mc:Ignorable="d"
-             x:Class="App1.MainPage">
-      
+             x:Class="App1.MainPage"
+             x:Name="Page">      
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="0.1*"/>
         </Grid.RowDefinitions>
-
-
+        
         <Button Grid.Row="1" Text="REZERVOVAT"  BackgroundColor="#F9AA33" CornerRadius="10" BorderWidth="2" VerticalOptions="Center" Margin="5" Command="{Binding CreateModal1CMD}"/>
-
-
+        
         <CollectionView Grid.Row="0" ItemsSource="{Binding seznamRezervaci}">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
@@ -29,30 +27,17 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>                       
                         <Label Grid.Row="0" Grid.Column="0" Text="{Binding Name}" FontAttributes="Bold" />
                         <Label Grid.Row="1" Grid.Column="0" Text="{Binding Date}" FontAttributes="Italic" VerticalOptions="End" />
                         <Label Grid.Row="1" Grid.Column="1" Text="{Binding Time}" FontAttributes="Italic" VerticalOptions="End" />
                         <Label Grid.Row="2" Grid.Column="0" Text="{Binding Vehicle}" FontAttributes="Italic" VerticalOptions="End" />
                         <Label Grid.Row="2" Grid.Column="1" Text="{Binding Type}" FontAttributes="Italic" VerticalOptions="End" />
+                        <Button Grid.Column="2"  Text="Delete" Command="{Binding Source={x:Reference Page}, Path=BindingContext.Delete}" CommandParameter="{Binding}" />
                     </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-
-
-        <!--<Label Grid.Row="0" Text="{Binding seznamRezervaci[0].Name}"/>
-        <Label Grid.Row="0" Text="{Binding seznamRezervaci[0].Date}"/>
-        <Label Grid.Row="0" Text="{Binding seznamRezervaci[0].Time}"/>
-        <Label Grid.Row="0" Text="{Binding seznamRezervaci[0].Vehicle}"/>
-        <Label Grid.Row="0" Text="{Binding seznamRezervaci[0].Type}"/>-->
-
-        <!--<Entry Grid.Row="1" Placeholder="novaRezervace" Text="{Binding novaRezervance}"/>-->
-
-
     </Grid>
-
-    
-
-
 </ContentPage>

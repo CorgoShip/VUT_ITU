@@ -8,10 +8,10 @@
     <ContentPage.Content>
         <StackLayout>            
             <Entry Placeholder="Nazev jizdy" Text="{Binding name}"/>
-            <Entry Placeholder="Typ Jizdy" Text="{Binding type}"/>
-            <Entry Placeholder="Vozidlo" Text="{Binding vehicle}"/>
-            <Entry Placeholder="Datum" Text="{Binding date}"/>
-            <Entry Placeholder="Cas" Text="{Binding time}"/>
+            <Picker Title="Vyber Typ Jizdy" ItemsSource="{Binding TypeList}" SelectedItem="{Binding type}"/>           
+            <Picker Title="Vyber vozidlo" ItemsSource="{Binding CarLsit}" SelectedItem="{Binding vehicle}"/>
+            <DatePicker Date="{Binding date}"/>
+            <TimePicker Time="{Binding time}"/>
             <Button Text="Potvrdit" BackgroundColor="#F9AA33" CornerRadius="10" BorderWidth="2" VerticalOptions="Center" Margin="5" Command="{Binding AddRezervaceCMD}"/>
             <Button Text="Zrusit" BackgroundColor="#F9AA33" CornerRadius="10" BorderWidth="2" VerticalOptions="Center" Margin="5" Command="{Binding DestroyModal1CMD}"/>
             

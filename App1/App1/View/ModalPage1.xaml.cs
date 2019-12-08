@@ -21,12 +21,11 @@ namespace App1.View
         {
             this.BindingContext = this;
             InitializeComponent();
-            _seznamRezervaci = seznamRezervaci;
-            
+            _seznamRezervaci = seznamRezervaci;            
         }
 
-        public string date { get; set; }
-        public string time { get; set; }
+        public DateTime date { get; set; }
+        public TimeSpan time { get; set; }
         public string type { get; set; }
         public string vehicle { get; set; }
         public string name { get; set; }
@@ -41,18 +40,20 @@ namespace App1.View
 
         public ICommand AddRezervaceCMD => new Command(AddRezervace);
 
-        public string novaRezervance { get; set; }
-
         public void AddRezervace()
         {
             Reservation temp = new Reservation();
-            temp.Date = date;
+            temp.Date = date.ToShortDateString();
             temp.Name = name;
-            temp.Time = time;
+            temp.Time = time.ToString();
             temp.Type = type;
             temp.Vehicle = vehicle;
             _seznamRezervaci.Add(temp);
             DestryModal1();
         }
+
+        public List<string> CarLsit { get; set; } = new List<string>(){"Skoda Octavia", "VW Golf", "VW Caddy", "VW Transporter"};
+        public List<string> TypeList { get; set; } = new List<string>() { "1) Oprava Serveru", "2) Schuzka se zakaznikem", "3) Interni IT", "4) Kontrola Serveru" };
+
     }
 }

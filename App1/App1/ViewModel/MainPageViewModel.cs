@@ -8,24 +8,23 @@ using App1.ResFormat;
 using App1.Services;
 using App1.View;
 using App1;
+using System.Diagnostics;
 
 namespace App1.ViewModel
 {
     public class MainPageViewModel : ReservationService
     { 
         public ObservableCollection<Reservation> seznamRezervaci { get; set; }
-        public ObservableCollection<string> seznamAut { get; set; }        
-
-        /*
-        public void AddCarRes()
-        {
-            seznamAut.Add(novaRezervance);
-        }
-        */
 
         private readonly INavigation _navigation;
 
         public ICommand CreateModal1CMD => new Command(CreateModal1);
+
+        public ICommand Delete => new Command(DeleteH);
+
+        async void DeleteH (object p){
+            seznamRezervaci.Remove((Reservation)p);
+        }
 
         async void CreateModal1()
         {
@@ -37,28 +36,22 @@ namespace App1.ViewModel
         public MainPageViewModel(INavigation navigation)
         {
             _navigation = navigation;
-            seznamRezervaci = new ObservableCollection<Reservation>();
-            seznamAut = new ObservableCollection<string>();
-
-
-            seznamAut.Add("Oktavka");
-            seznamAut.Add("Lambo");
-            seznamAut.Add("Nafta");
+            seznamRezervaci = new ObservableCollection<Reservation>();            
 
             Reservation temp = new Reservation();
-            temp.Date = "15.41.1447"; 
-            temp.Name = "Rychla cesta";
+            temp.Date = "8.12.2019"; 
+            temp.Name = "Oprava serveru v Ostrave";
             temp.Time = "14:54";
-            temp.Type = "Oprava";
-            temp.Vehicle = "Lexus";
+            temp.Type = "1) Oprava Serveru";
+            temp.Vehicle = "Skoda Octavia";
 
             seznamRezervaci.Add(temp);  // simulovana prnvni rezervace
 
-            temp.Date = "4.12.1998";
-            temp.Name = "Nova cesta2";
-            temp.Time = "18:21";
-            temp.Type = "Kontrola Serveru";
-            temp.Vehicle = "Lambo";
+            temp.Date = "12.12.2019";
+            temp.Name = "Schuzka s FirmaXYZ";
+            temp.Time = "12:21";
+            temp.Type = "2) Schuzka se zakaznikem";
+            temp.Vehicle = "VW Golf";
 
             seznamRezervaci.Add(temp); // simulovana druha drzervace 
         }

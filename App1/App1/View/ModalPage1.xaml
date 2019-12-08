@@ -6,16 +6,15 @@
              mc:Ignorable="d"
              x:Class="App1.View.ModalPage1">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-            <Entry Placeholder="Nazev jizdy"/>
-            <Entry Placeholder="Typ Jizdy"/>
-            <Entry Placeholder="Vozidlo"/>
-            <Entry Placeholder="Datum"/>
-            <Entry Placeholder="Cas"/>
-            <Button Text="Potvdit" BackgroundColor="#F9AA33" CornerRadius="10" BorderWidth="2" VerticalOptions="Center" Margin="5"/>
+        <StackLayout>            
+            <Entry Placeholder="Nazev jizdy" Text="{Binding name}"/>
+            <Entry Placeholder="Typ Jizdy" Text="{Binding type}"/>
+            <Entry Placeholder="Vozidlo" Text="{Binding vehicle}"/>
+            <Entry Placeholder="Datum" Text="{Binding date}"/>
+            <Entry Placeholder="Cas" Text="{Binding time}"/>
+            <Button Text="Potvrdit" BackgroundColor="#F9AA33" CornerRadius="10" BorderWidth="2" VerticalOptions="Center" Margin="5" Command="{Binding AddRezervaceCMD}"/>
+            <Button Text="Zrusit" BackgroundColor="#F9AA33" CornerRadius="10" BorderWidth="2" VerticalOptions="Center" Margin="5" Command="{Binding DestroyModal1CMD}"/>
+            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

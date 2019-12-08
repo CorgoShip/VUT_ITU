@@ -21,7 +21,6 @@ namespace App1
             InitializeComponent();
             this.BindingContext = new MainPageViewModel(this.Navigation);
         }
-
-         
+        
     }
 }

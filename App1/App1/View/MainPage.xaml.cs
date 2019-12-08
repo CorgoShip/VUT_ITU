@@ -1,9 +1,12 @@
-﻿using System;
+﻿using App1.View;
+using App1.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace App1
@@ -16,6 +19,9 @@ namespace App1
         public MainPage()
         {
             InitializeComponent();
-        }        
+            this.BindingContext = new MainPageViewModel(this.Navigation);
+        }
+
+         
     }
 }

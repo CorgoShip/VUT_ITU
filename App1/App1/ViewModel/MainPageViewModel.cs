@@ -6,6 +6,8 @@ using System.Windows.Input;
 using System.Collections.ObjectModel;
 using App1.ResFormat;
 using App1.Services;
+using App1.View;
+using App1;
 
 namespace App1.ViewModel
 {
@@ -27,11 +29,20 @@ namespace App1.ViewModel
         {
             seznamAut.Add(novaRezervance);
         }
-        
-        
+        private readonly INavigation _navigation;
 
-        public MainPageViewModel()
+        public ICommand CreateModal1CMD => new Command(CreateModal1);
+
+        async void CreateModal1()
         {
+            ModalPage1 modal1 = new ModalPage1();
+
+            await this._navigation.PushModalAsync(modal1);
+        }
+
+        public MainPageViewModel(INavigation navigation)
+        {
+            _navigation = navigation;
             seznamRezervaci = new ObservableCollection<Reservation>();
             seznamAut = new ObservableCollection<string>();            
             //seznamRezervaci = GetReservationsAsync();
@@ -57,7 +68,6 @@ namespace App1.ViewModel
             temp.Vehicle = "Lambo";
 
             seznamRezervaci.Add(temp);
-            //seznamRezervaci.
         }
     }
 }

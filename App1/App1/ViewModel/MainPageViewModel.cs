@@ -38,12 +38,14 @@ namespace App1.ViewModel
             _navigation = navigation;
             seznamRezervaci = new ObservableCollection<Reservation>();            
 
+            // Tato data jsou pouze pro visualizaci
             Reservation temp = new Reservation();
             temp.Date = "8.12.2019"; 
             temp.Name = "Oprava serveru v Ostrave";
             temp.Time = "14:54";
             temp.Type = "1) Oprava Serveru";
             temp.Vehicle = "Skoda Octavia";
+            temp.CreatedBy = "User1";
 
             seznamRezervaci.Add(temp);  // simulovana prnvni rezervace
 
@@ -52,6 +54,7 @@ namespace App1.ViewModel
             temp.Time = "12:21";
             temp.Type = "2) Schuzka se zakaznikem";
             temp.Vehicle = "VW Golf";
+            temp.CreatedBy = "Zbyna";
 
             seznamRezervaci.Add(temp); // simulovana druha drzervace 
         }

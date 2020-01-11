@@ -12,6 +12,7 @@
             <Picker Title="Vyber vozidlo" ItemsSource="{Binding CarLsit}" SelectedItem="{Binding vehicle}"/>
             <DatePicker Date="{Binding date}"/>
             <TimePicker Time="{Binding time}"/>
+            <Entry Placeholder="Aktualni uzivatel" Text="{Binding creator}"/>
             <Button Text="Potvrdit" BackgroundColor="#F9AA33" CornerRadius="10" BorderWidth="2" VerticalOptions="Center" Margin="5" Command="{Binding AddRezervaceCMD}"/>
             <Button Text="Zrusit" BackgroundColor="#F9AA33" CornerRadius="10" BorderWidth="2" VerticalOptions="Center" Margin="5" Command="{Binding DestroyModal1CMD}"/>
             

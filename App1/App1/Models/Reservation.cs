@@ -9,6 +9,7 @@ namespace App1.ResFormat
         public string Vehicle { get; set; }
         public string Date { get; set; }
         public string Time { get; set; }
+        public string CreatedBy { get; set; }
 
     }
 }

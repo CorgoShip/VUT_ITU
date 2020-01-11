@@ -29,6 +29,7 @@ namespace App1.View
         public string type { get; set; }
         public string vehicle { get; set; }
         public string name { get; set; }
+        public string creator { get; set; }
 
 
         public ICommand DestroyModal1CMD => new Command(DestryModal1);
@@ -48,6 +49,7 @@ namespace App1.View
             temp.Time = time.ToString();
             temp.Type = type;
             temp.Vehicle = vehicle;
+            temp.CreatedBy = creator;
             _seznamRezervaci.Add(temp);
             DestryModal1();
         }

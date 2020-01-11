@@ -23,17 +23,19 @@
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>                       
                         <Label Grid.Row="0" Grid.Column="0" Text="{Binding Name}" FontAttributes="Bold" />
                         <Label Grid.Row="1" Grid.Column="0" Text="{Binding Date}" FontAttributes="Italic" VerticalOptions="End" />
                         <Label Grid.Row="1" Grid.Column="1" Text="{Binding Time}" FontAttributes="Italic" VerticalOptions="End" />
                         <Label Grid.Row="2" Grid.Column="0" Text="{Binding Vehicle}" FontAttributes="Italic" VerticalOptions="End" />
                         <Label Grid.Row="2" Grid.Column="1" Text="{Binding Type}" FontAttributes="Italic" VerticalOptions="End" />
+                        <Label Grid.Row="3" Grid.Column="0" Text="{Binding CreatedBy}" FontAttributes="Italic" VerticalOptions="End" /> 
                         <Button Grid.Column="2"  Text="Delete" Command="{Binding Source={x:Reference Page}, Path=BindingContext.Delete}" CommandParameter="{Binding}" />
                     </Grid>
                 </DataTemplate>

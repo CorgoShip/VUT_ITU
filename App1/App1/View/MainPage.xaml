@@ -36,7 +36,8 @@
                         <Label Grid.Row="2" Grid.Column="0" Text="{Binding Vehicle}" FontAttributes="Italic" VerticalOptions="End" />
                         <Label Grid.Row="2" Grid.Column="1" Text="{Binding Type}" FontAttributes="Italic" VerticalOptions="End" />
                         <Label Grid.Row="3" Grid.Column="0" Text="{Binding CreatedBy}" FontAttributes="Italic" VerticalOptions="End" /> 
-                        <Button Grid.Column="2"  Text="Delete" Command="{Binding Source={x:Reference Page}, Path=BindingContext.Delete}" CommandParameter="{Binding}" />
+                        <Button Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" BackgroundColor="OrangeRed" Text="Delete" Command="{Binding Source={x:Reference Page}, Path=BindingContext.Delete}" CommandParameter="{Binding}" />
+                        <Button Grid.Column="2" Grid.Row="2" Grid.RowSpan="2" BackgroundColor="GreenYellow" Text="Finish" Command="{Binding Source={x:Reference Page}, Path=BindingContext.Finish}" CommandParameter="{Binding}" />
                     </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>

@@ -26,6 +26,7 @@ namespace App1.View
 
         public DateTime date { get; set; }
         public TimeSpan time { get; set; }
+        public TimeSpan endTime { get; set; }
         public string type { get; set; }
         public string vehicle { get; set; }
         public string name { get; set; }
@@ -47,6 +48,7 @@ namespace App1.View
             temp.Date = date.ToShortDateString();
             temp.Name = name;
             temp.Time = time.ToString();
+            temp.EndTime = endTime.ToString();
             temp.Type = type;
             temp.Vehicle = vehicle;
             temp.CreatedBy = creator;

@@ -9,6 +9,7 @@ using App1.Services;
 using App1.View;
 using App1;
 using System.Diagnostics;
+using System.Threading.Tasks;
 
 namespace App1.ViewModel
 {
@@ -22,7 +23,16 @@ namespace App1.ViewModel
 
         public ICommand Delete => new Command(DeleteH);
 
-        async void DeleteH (object p){
+        public ICommand Finish => new Command(FinishH);
+
+        async void FinishH(object obj)
+        {
+            string result = await App.Current.MainPage.DisplayPromptAsync("Jizda uspesne dokoncena", "Problemy s vozidlem:", placeholder: "s vozidlem nebyly zadne problemy");
+            DeleteH(obj);
+        }
+
+        async void DeleteH (object p)
+        {
             seznamRezervaci.Remove((Reservation)p);
         }
 

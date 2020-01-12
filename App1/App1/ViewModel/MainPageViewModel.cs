@@ -56,7 +56,7 @@ namespace App1.ViewModel
             temp.Vehicle = "VW Golf";
             temp.CreatedBy = "Zbyna";
 
-            seznamRezervaci.Add(temp); // simulovana druha drzervace 
+            seznamRezervaci.Add(temp); // simulovana druha rezervace 
         }
     }
 }

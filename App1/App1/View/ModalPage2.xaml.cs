@@ -16,12 +16,22 @@ namespace App1.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ModalPage2 : ContentPage
     {
-        private readonly ObservableCollection<Reservation> _seznamRezervaci;
+
+        public ObservableCollection<Reservation> seznamRezervaci2 { get; set; }
         public ModalPage2(ObservableCollection<Reservation> seznamRezervaci)
         {
-            this.BindingContext = this;
+            
             InitializeComponent();
-            _seznamRezervaci = seznamRezervaci;
+            seznamRezervaci2 = seznamRezervaci;
+            this.BindingContext = this;
+
+        }
+
+        public ICommand DestroyModal2CMD => new Command(DestroyModal2);
+
+        async void DestroyModal2()
+        {
+            await this.Navigation.PopModalAsync();
         }
     }
 }

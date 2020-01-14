@@ -17,11 +17,13 @@ namespace App1.View
     public partial class ModalPage1 : ContentPage
     {
         private readonly ObservableCollection<Reservation> _seznamRezervaci;
-        public ModalPage1(ObservableCollection<Reservation> seznamRezervaci)
+        private readonly ObservableCollection<Reservation> _mojeRezervace;
+        public ModalPage1(ObservableCollection<Reservation> seznamRezervaci, ObservableCollection<Reservation> mojeRezervace)
         {
             this.BindingContext = this;
             InitializeComponent();
-            _seznamRezervaci = seznamRezervaci;            
+            _seznamRezervaci = seznamRezervaci;
+            _mojeRezervace = mojeRezervace;
         }
 
         public DateTime date { get; set; }
@@ -52,6 +54,11 @@ namespace App1.View
             temp.Type = type;
             temp.Vehicle = vehicle;
             temp.CreatedBy = creator;
+
+            if (creator == "user1")
+            {
+                _mojeRezervace.Add(temp);
+            }
             _seznamRezervaci.Add(temp);
             DestryModal1();
         }

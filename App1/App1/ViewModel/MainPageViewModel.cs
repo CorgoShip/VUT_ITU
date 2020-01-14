@@ -20,6 +20,9 @@ namespace App1.ViewModel
         //Seznam rezervaci
         public ObservableCollection<Reservation> seznamRezervaci { get; set; }
 
+        public ObservableCollection<Reservation> MojeRezervace { get; set; }
+        public ObservableCollection<Reservation> HistorieRezervaci { get; set; }
+
         //promena pro vyber zobrazovane stranky
         private readonly INavigation _navigation;
 
@@ -29,14 +32,18 @@ namespace App1.ViewModel
         public ICommand CreateModal2CMD => new Command(CreateModal2);
         public ICommand CreateHelpCMD => new Command(CreateHelp);
 
+        public ICommand CreateHistorieCMD => new Command(CreateHistorie);
+
         public ICommand Delete => new Command(DeleteH);
+
+
         public ICommand Finish => new Command(FinishH);
         
         public ICommand Delete2 => new Command(AreUSure);
 
         public async void AreUSure(object p)
         {
-            var result = await App.Current.MainPage.DisplayAlert("Pozor", "Naozaj chcete odstrániť túto jazdu?", "Áno", "Nie"); // since we are using async, we should specify the DisplayAlert as awaiting.
+            var result = await App.Current.MainPage.DisplayAlert("Pozor", "Opravdu chcete odstranit tuto jizdu?", "Ano", "Ne"); // since we are using async, we should specify the DisplayAlert as awaiting.
             if (result == true) // if it's equal to Ok
             {
                 DeleteH(p);
@@ -49,25 +56,38 @@ namespace App1.ViewModel
 
         async void FinishH(object obj)
         {
-            string result = await App.Current.MainPage.DisplayPromptAsync("Jizda uspesne dokoncena", "Problemy s vozidlem:", placeholder: "s vozidlem nebyly zadne problemy");
+            string result = await App.Current.MainPage.DisplayPromptAsync("Jizda uspesne dokoncena", "Problemy s vozidlem:", placeholder: "Zde zadejte poznámky k cestě");
             if (result == null)
             {
                 return;
             }
            else
             {
+                Reservation temp = new Reservation();
+                temp = (Reservation)obj;
+                temp.Comment = result;
+                HistorieRezervaci.Add(temp);
                 DeleteH(obj);
             }
         }
 
         async void DeleteH (object p)
         {
+            Reservation temp = new Reservation();
+            temp = (Reservation)p;
+
+            if (temp.CreatedBy == "user1")
+            {
+                MojeRezervace.Remove((Reservation)p);
+            }
+
             seznamRezervaci.Remove((Reservation)p);
+  
         }
 
         async void CreateModal1()
         {
-            ModalPage1 modal1 = new ModalPage1(seznamRezervaci);
+            ModalPage1 modal1 = new ModalPage1(seznamRezervaci,MojeRezervace);
 
             await this._navigation.PushModalAsync(modal1);
         }
@@ -81,16 +101,25 @@ namespace App1.ViewModel
 
         async void CreateHelp()
         {
-            HelpPage modal3 = new HelpPage(seznamRezervaci);
-            await this._navigation.PushModalAsync(modal3);
+            HelpPage modal4 = new HelpPage(seznamRezervaci);
+            await this._navigation.PushModalAsync(modal4);
             return; 
         }
+        async void CreateHistorie()
+        {
+            ModalHistorie modal3 = new ModalHistorie(HistorieRezervaci);
+
+            await this._navigation.PushModalAsync(modal3);
+        }
+
         public MainPageViewModel(INavigation navigation)
         {
             _navigation = navigation;
 
-            seznamRezervaci = new ObservableCollection<Reservation>();            
-            
+            seznamRezervaci = new ObservableCollection<Reservation>();
+            HistorieRezervaci = new ObservableCollection<Reservation>();
+            MojeRezervace = new ObservableCollection<Reservation>();
+
             // Tato data jsou pouze pro visualizaci
             Reservation temp = new Reservation();
             temp.Date = "8.12.2019"; 
@@ -98,9 +127,10 @@ namespace App1.ViewModel
             temp.Time = "14:54";
             temp.Type = "1) Oprava Serveru";
             temp.Vehicle = "Skoda Octavia";
-            temp.CreatedBy = "User1";
+            temp.CreatedBy = "user1";
 
-            seznamRezervaci.Add(temp);  // simulovana prnvni rezervace
+            MojeRezervace.Add(temp);  // simulovana prnvni rezervace
+            seznamRezervaci.Add(temp);
 
             temp.Date = "12.12.2019";
             temp.Name = "Schuzka s FirmaXYZ";

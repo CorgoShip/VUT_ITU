@@ -15,11 +15,17 @@ namespace App1.ViewModel
 {
     public class MainPageViewModel : ReservationService
     { 
+
+        //Seznam rezervaci
         public ObservableCollection<Reservation> seznamRezervaci { get; set; }
 
+        //promena pro vyber zobrazovane stranky
         private readonly INavigation _navigation;
 
+        //Prikazy
         public ICommand CreateModal1CMD => new Command(CreateModal1);
+
+        public ICommand CreateModal2CMD => new Command(CreateModal2);
 
         public ICommand Delete => new Command(DeleteH);
 
@@ -27,7 +33,7 @@ namespace App1.ViewModel
 
         async void FinishH(object obj)
         {
-            string result = await App.Current.MainPage.DisplayPromptAsync("Jizda uspesne dokoncena", "Problemy s vozidlem:", placeholder: "s vozidlem nebyly zadne problemy");
+            string result = await App.Current.MainPage.DisplayPromptAsync("Jizda uspesne dokoncena", "Problemy s vozidlem:", placeholder: "S vozidlem nebyly zadne problemy");
             DeleteH(obj);
         }
 
@@ -41,11 +47,19 @@ namespace App1.ViewModel
             ModalPage1 modal1 = new ModalPage1(seznamRezervaci);
 
             await this._navigation.PushModalAsync(modal1);
-        }                
+        }
+
+        async void CreateModal2()
+        {
+            ModalPage2 modal2 = new ModalPage2(seznamRezervaci);
+
+            await this._navigation.PushModalAsync(modal2);
+        }
 
         public MainPageViewModel(INavigation navigation)
         {
             _navigation = navigation;
+
             seznamRezervaci = new ObservableCollection<Reservation>();            
 
             // Tato data jsou pouze pro visualizaci

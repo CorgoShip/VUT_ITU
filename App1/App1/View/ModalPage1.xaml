@@ -11,7 +11,10 @@
             <Picker Title="Vyber Typ Jizdy" ItemsSource="{Binding TypeList}" SelectedItem="{Binding type}"/>           
             <Picker Title="Vyber vozidlo" ItemsSource="{Binding CarLsit}" SelectedItem="{Binding vehicle}"/>
             <DatePicker Date="{Binding date}"/>
-            <TimePicker Time="{Binding time}"/>
+
+            <TimePicker Grid.Column="0"  Time="{Binding time}"/>
+
+
             <TimePicker Time="{Binding endTime}"/>
             <Entry Placeholder="Aktualni uzivatel" Text="{Binding creator}"/>
             <Button Text="Potvrdit" BackgroundColor="#F9AA33" CornerRadius="10" BorderWidth="2" VerticalOptions="Center" Margin="5" Command="{Binding AddRezervaceCMD}"/>

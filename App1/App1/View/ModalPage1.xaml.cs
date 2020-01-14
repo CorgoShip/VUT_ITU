@@ -56,6 +56,8 @@ namespace App1.View
             DestryModal1();
         }
 
+
+        //TODO
         public List<string> CarLsit { get; set; } = new List<string>(){"Skoda Octavia", "VW Golf", "VW Caddy", "VW Transporter"};
         public List<string> TypeList { get; set; } = new List<string>() { "1) Oprava Serveru", "2) Schuzka se zakaznikem", "3) Interni IT", "4) Kontrola Serveru" };
 

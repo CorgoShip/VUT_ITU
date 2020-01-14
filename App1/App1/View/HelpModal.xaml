@@ -27,11 +27,11 @@
 
             </Grid>
 
-            <Button x:Name="Zobraz" Grid.Row="1"  Text="Zobrazenie vsetkych rezervacii" BackgroundColor="#F9AA33" BorderWidth="2" VerticalOptions="Center" Margin="1" Command="{Binding CreateHelpCMD1}"/>
-            <Button Grid.Row="2" Text="Zobrazenie historii rezervacii" BackgroundColor="#F9AA33" BorderWidth="2" VerticalOptions="Center" Margin="1" Command="{Binding CreateHelpCMD2}"/>
-            <Button Grid.Row="3" Text="Odstranenie jazdy" BackgroundColor="#F9AA33" BorderWidth="2" VerticalOptions="Center" Margin="1" Command="{Binding CreateHelpCMD3}"/>
-            <Button Grid.Row="4" Text="Dokoncenie jazdy" BackgroundColor="#F9AA33" BorderWidth="2" VerticalOptions="Center" Margin="1" Command="{Binding CreateHelpCMD4}"/>
-            <Button Grid.Row="5" Text="Pridanie jazdy" BackgroundColor="#F9AA33" BorderWidth="2" VerticalOptions="Center" Margin="1" Command="{Binding CreateHelpCMD5}"/>
+            <Button x:Name="Zobraz" Grid.Row="1"  Text="Zobrazeni vsech rezervaci" BackgroundColor="#F9AA33" BorderWidth="2" VerticalOptions="Center" Margin="1" Command="{Binding CreateHelpCMD1}"/>
+            <Button Grid.Row="2" Text="Zobrazeni historie rezervaci" BackgroundColor="#F9AA33" BorderWidth="2" VerticalOptions="Center" Margin="1" Command="{Binding CreateHelpCMD2}"/>
+            <Button Grid.Row="3" Text="Odstraneni jizdy" BackgroundColor="#F9AA33" BorderWidth="2" VerticalOptions="Center" Margin="1" Command="{Binding CreateHelpCMD3}"/>
+            <Button Grid.Row="4" Text="Dokonceni jizdy" BackgroundColor="#F9AA33" BorderWidth="2" VerticalOptions="Center" Margin="1" Command="{Binding CreateHelpCMD4}"/>
+            <Button Grid.Row="5" Text="Pridani jazdy" BackgroundColor="#F9AA33" BorderWidth="2" VerticalOptions="Center" Margin="1" Command="{Binding CreateHelpCMD5}"/>
 
         </Grid>
     </ContentPage.Content>

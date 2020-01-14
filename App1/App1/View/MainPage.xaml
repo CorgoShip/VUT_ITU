@@ -24,7 +24,7 @@
 
             <Button Grid.Column="0" Text="Vsechny rezervace"  BackgroundColor="#F9AA33" BorderWidth="2" VerticalOptions="Center" Margin="5" Command="{Binding CreateModal2CMD}"/>
             <Button Grid.Column="1" Text="Historie rezervaci"  BackgroundColor="#F9AA33" BorderWidth="2" VerticalOptions="Center" Margin="5" Command="{Binding CreateModal1CMD}"/>
-            <Button Grid.Column="2" Text="Napoveda"  BackgroundColor="#F9AA33" BorderWidth="2" VerticalOptions="Center" Margin="5" Command="{Binding CreateModal1CMD}"/>
+            <Button Grid.Column="2" Text="Napoveda"  BackgroundColor="#F9AA33" BorderWidth="2" VerticalOptions="Center" Margin="5" Command="{Binding CreateHelpCMD}"/>
         </Grid>
         
         <Button Grid.Row="2" Text="REZERVOVAT"  BackgroundColor="#F9AA33" CornerRadius="10" BorderWidth="2" VerticalOptions="Center" Margin="5" Command="{Binding CreateModal1CMD}"/>

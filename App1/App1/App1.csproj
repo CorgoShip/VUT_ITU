@@ -21,6 +21,12 @@
   </ItemGroup>  
 
   <ItemGroup>
+    <Compile Update="View\HelpPage.xaml.cs">
+      <DependentUpon>HelpPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>  
+
+  <ItemGroup>
     <EmbeddedResource Update="View\ModalPage1.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

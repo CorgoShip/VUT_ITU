@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="App1.View.HelpPage"
+             x:Name="Help">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <Grid BackgroundColor="#F9AA33"  >
+            <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.3*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Row="0" Grid.Column="0" Text="Zpet" BackgroundColor="#F9AA33" BorderWidth="2"  HorizontalOptions="Start" VerticalOptions="Center" Margin="1" Command="{Binding Source={x:Reference Help}, Path=BindingContext.CreateHelpCMD0}" CommandParameter="{Binding}"/>
+            <Label Grid.Row="0" Grid.Column="1" Text="Napoveda" HorizontalOptions="Start" VerticalOptions="Center" />
+        
+        </Grid>
+        
+            <Button x:Name="Zobraz" Grid.Row="1"  Text="Zobrazenie vsetkych rezervacii" BackgroundColor="#F9AA33" BorderWidth="2" VerticalOptions="Center" Margin="1" Command="{Binding CreateHelpCMD1}"/>
+            <Button Grid.Row="2" Text="Zobrazenie historii rezervacii" BackgroundColor="#F9AA33" BorderWidth="2" VerticalOptions="Center" Margin="1" Command="{Binding CreateHelpCMD2}"/>
+            <Button Grid.Row="3" Text="Odstranenie jazdy" BackgroundColor="#F9AA33" BorderWidth="2" VerticalOptions="Center" Margin="1" Command="{Binding CreateHelpCMD3}"/>
+            <Button Grid.Row="4" Text="Dokoncenie jazdy" BackgroundColor="#F9AA33" BorderWidth="2" VerticalOptions="Center" Margin="1" Command="{Binding CreateHelpCMD4}"/>
+        <Button Grid.Row="5" Text="Pridanie jazdy" BackgroundColor="#F9AA33" BorderWidth="2" VerticalOptions="Center" Margin="1" Command="{Binding CreateHelpCMD5}"/>
+
+    </Grid>
+</ContentPage>

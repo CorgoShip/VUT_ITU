@@ -27,19 +27,12 @@ namespace App1.ViewModel
         public ICommand CreateModal1CMD => new Command(CreateModal1);
 
         public ICommand CreateModal2CMD => new Command(CreateModal2);
+        public ICommand CreateHelpCMD => new Command(CreateHelp);
 
         public ICommand Delete => new Command(DeleteH);
-
-        public ICommand DisplayName => new Command(Display);
-
         public ICommand Finish => new Command(FinishH);
         
         public ICommand Delete2 => new Command(AreUSure);
-
-        public async void Display()
-        {
-            return;
-        }
 
         public async void AreUSure(object p)
         {
@@ -86,6 +79,12 @@ namespace App1.ViewModel
             await this._navigation.PushModalAsync(modal2);
         }
 
+        async void CreateHelp()
+        {
+            HelpPage modal3 = new HelpPage(seznamRezervaci);
+            await this._navigation.PushModalAsync(modal3);
+            return; 
+        }
         public MainPageViewModel(INavigation navigation)
         {
             _navigation = navigation;

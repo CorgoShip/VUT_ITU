@@ -11,6 +11,9 @@ using System.Collections.ObjectModel;
 using App1.ResFormat;
 using System.Windows.Input;
 
+using App1.Services;
+using App1.View;
+using App1;
 namespace App1.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -38,29 +41,31 @@ namespace App1.View
         }
 
 
-        void CreateHelpShowAll()
+        async void CreateHelpShowAll()
         {
-
+            await App.Current.MainPage.DisplayAlert("Vsechny rezervace", "Zobrazi vsechny rezervace, od vsetkych uzivatelov.", "Ok");
         }
 
-        void HelpHistory()
+        async void HelpHistory()
         {
-
+            await App.Current.MainPage.DisplayAlert("Historie rezervaci", "Zobrazi historiu jazd od aktualneho uzivatela. Po kliknuti na ? zobrazi spravu s ktorou sa jazda skoncila.", "Ok");
         }
 
-        void HelpDelete()
+        async void HelpDelete()
         {
-
+            await App.Current.MainPage.DisplayAlert("Delete", "Odstrani planovanu jazdu. " +
+                "Po stlaceni Ne jazda ostava planovana. " +
+                "Po stlaceni Ano jazda je odstranena.", "Ok");
         }
 
-        void HelpFinish()
+        async void HelpFinish()
         {
-
+            await App.Current.MainPage.DisplayAlert("Finish", "Sluzi na ukoncenie jazdy. Po kliknuti je uzivatel vyzvany aby zadal, ake boli problemy s autom. Potvrdí to kliknutim na tlacidlo OK. Pre vratenie sa (a neukoncenie jazdy) sluzi tlacidlo Cancel. ", "Ok");
         }
 
-        void HelpAdd()
+        async void HelpAdd()
         {
-
+            await App.Current.MainPage.DisplayAlert("Rezervovat", "Po kliknuti sa uzivatelovi otvori formular, kam moze zadat udaje potrebne pre novu jazdu. ", "Ok");
         }
     }
 }

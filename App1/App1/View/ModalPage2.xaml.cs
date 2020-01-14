@@ -18,11 +18,15 @@ namespace App1.View
     {
 
         public ObservableCollection<Reservation> seznamRezervaci2 { get; set; }
+        public ObservableCollection<Reservation> DescOrderedList { get; set; }
         public ModalPage2(ObservableCollection<Reservation> seznamRezervaci)
         {
             
             InitializeComponent();
             seznamRezervaci2 = seznamRezervaci;
+            DescOrderedList = new ObservableCollection<Reservation>(seznamRezervaci.OrderBy(x => x.Date));
+
+            seznamRezervaci2 = DescOrderedList;
             this.BindingContext = this;
 
         }

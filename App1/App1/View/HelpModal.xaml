@@ -23,8 +23,7 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <Button Grid.Row="0" Grid.Column="0" Text="Zpet" BackgroundColor="#F9AA33" BorderWidth="2"  HorizontalOptions="Start" VerticalOptions="Center" Margin="1" Command="{Binding DestroyHelpCMD}"/>
-                <Label Grid.Row="0" Grid.Column="1" Text="Napoveda" HorizontalOptions="Start" VerticalOptions="Center" />
-
+                
             </Grid>
 
             <Button x:Name="Zobraz" Grid.Row="1"  Text="Zobrazenie vsetkych rezervacii" BackgroundColor="#F9AA33" BorderWidth="2" VerticalOptions="Center" Margin="1" Command="{Binding CreateHelpCMD1}"/>

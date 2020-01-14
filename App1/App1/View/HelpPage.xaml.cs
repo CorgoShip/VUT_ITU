@@ -16,12 +16,45 @@ namespace App1.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class HelpPage : ContentPage
     {
-        private readonly ObservableCollection<Reservation> _seznamRezervaci;
-        public HelpPage(ObservableCollection<Reservation> seznamRezervaci)
+        public ICommand CreateHelpCMD0 => new Command(CreateHelp0);
+        public ICommand CreateHelpCMD1 => new Command(CreateHelpShowAll);
+        public ICommand CreateHelpCMD2 => new Command(HelpHistory);
+
+        public ICommand CreateHelpCMD3 => new Command(HelpDelete);
+        public ICommand CreateHelpCMD4 => new Command(HelpFinish);
+
+        public ICommand CreateHelpCMD5 => new Command(HelpAdd);
+
+
+
+        async void CreateHelp0()
         {
-            this.BindingContext = this;
-            InitializeComponent();
-            _seznamRezervaci = seznamRezervaci;
+            await this.Navigation.PopModalAsync();
+        }
+
+        void CreateHelpShowAll()
+        {
+
+        }
+
+        void HelpHistory()
+        {
+
+        }
+
+        void HelpDelete()
+        {
+
+        }
+
+        void HelpFinish()
+        {
+
+        }
+
+        void HelpAdd()
+        {
+
         }
 
     }

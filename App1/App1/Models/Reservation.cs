@@ -11,6 +11,7 @@ namespace App1.ResFormat
         public string Time { get; set; }
         public string CreatedBy { get; set; }
         public string EndTime { get; set; }
+        public string Comment { get; set; }
 
     }
 }

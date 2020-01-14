@@ -101,7 +101,7 @@ namespace App1.ViewModel
 
         async void CreateHelp()
         {
-            HelpPage modal4 = new HelpPage();
+            HelpModal modal4 = new HelpModal();
             await this._navigation.PushModalAsync(modal4);
             return; 
         }

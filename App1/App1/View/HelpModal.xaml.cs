@@ -14,9 +14,14 @@ using System.Windows.Input;
 namespace App1.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class HelpPage : ContentPage
+    public partial class HelpModal : ContentPage
     {
-        public ICommand CreateHelpCMD0 => new Command(CreateHelp0);
+        public HelpModal()
+        {
+            this.BindingContext = this;
+            InitializeComponent();
+        }
+
         public ICommand CreateHelpCMD1 => new Command(CreateHelpShowAll);
         public ICommand CreateHelpCMD2 => new Command(HelpHistory);
 
@@ -25,12 +30,13 @@ namespace App1.View
 
         public ICommand CreateHelpCMD5 => new Command(HelpAdd);
 
+        public ICommand DestroyHelpCMD => new Command(DestroyModal4);
 
-
-        async void CreateHelp0()
+        async void DestroyModal4()
         {
             await this.Navigation.PopModalAsync();
         }
+
 
         void CreateHelpShowAll()
         {
@@ -56,6 +62,5 @@ namespace App1.View
         {
 
         }
-
     }
 }

@@ -10,6 +10,8 @@ using Xamarin.Forms.Xaml;
 using System.Collections.ObjectModel;
 using App1.ResFormat;
 using System.Windows.Input;
+using System.Net.Http;
+using System.Globalization;
 
 namespace App1.View
 {
@@ -24,6 +26,8 @@ namespace App1.View
             InitializeComponent();
             _seznamRezervaci = seznamRezervaci;
             _mojeRezervace = mojeRezervace;
+            GetData();
+            GetData2();
         }
 
         public DateTime date { get; set; }
@@ -34,6 +38,29 @@ namespace App1.View
         public string name { get; set; }
         public string creator { get; set; }
 
+        public async Task GetData()
+        {
+            var result = await new HttpClient().GetAsync("https://gist.githubusercontent.com/CorgoShip/7f8c056ebab6b575efe8a2e8f356fd20/raw/1df9ec7c96ad2d28230775cf71367bd65c5242fc/CarList.txt");
+            var text = await result.Content.ReadAsStringAsync();
+
+            string[] cars = text.Split(',');
+            foreach (var item in cars)
+            {
+                CarLsit.Add(item);
+            }
+        }
+
+        public async Task GetData2()
+        {
+            var result = await new HttpClient().GetAsync("https://gist.githubusercontent.com/CorgoShip/7c1134535ca446acc779fa7a2327e59e/raw/3e34b0a396221f51ca8dd1e9f9df15e55f6726e8/TypeList");
+            var text = await result.Content.ReadAsStringAsync();
+
+            string[] types = text.Split(',');
+            foreach (var item in types)
+            {
+                TypeList.Add(item);
+            }
+        }
 
         public ICommand DestroyModal1CMD => new Command(DestryModal1);
 
@@ -44,7 +71,7 @@ namespace App1.View
 
         public ICommand AddRezervaceCMD => new Command(AddRezervace);
 
-        public void AddRezervace()
+        public async void AddRezervace()
         {
             Reservation temp = new Reservation();
             temp.Date = date.ToShortDateString();
@@ -55,6 +82,24 @@ namespace App1.View
             temp.Vehicle = vehicle;
             temp.CreatedBy = creator;
 
+            // proleze celou obsercoll a najde auto a cas
+            foreach (var data in _seznamRezervaci)
+            {
+                if (data.Vehicle == vehicle)
+                {
+                    if (data.Date == temp.Date)
+                    {
+                        if (TimeSpan.ParseExact(temp.Time, @"hh\:mm\:ss", CultureInfo.InvariantCulture) >= TimeSpan.ParseExact(data.Time, @"hh\:mm\:ss", CultureInfo.InvariantCulture) &&
+                            TimeSpan.ParseExact(temp.Time, @"hh\:mm\:ss", CultureInfo.InvariantCulture) <= TimeSpan.ParseExact(data.EndTime, @"hh\:mm\:ss", CultureInfo.InvariantCulture))
+                            {
+                            //  nedovoli auto vybrat
+                            await DisplayAlert("Pozor", "Toto vozidlo je ve vybranem terminu obsazene", "OK");
+                            return;
+                        }
+                    } 
+                }
+            }
+
             if (creator == "user1")
             {
                 _mojeRezervace.Add(temp);
@@ -63,10 +108,8 @@ namespace App1.View
             DestryModal1();
         }
 
-
-        //TODO
-        public List<string> CarLsit { get; set; } = new List<string>(){"Skoda Octavia", "VW Golf", "VW Caddy", "VW Transporter"};
-        public List<string> TypeList { get; set; } = new List<string>() { "1) Oprava Serveru", "2) Schuzka se zakaznikem", "3) Interni IT", "4) Kontrola Serveru" };
+        public ObservableCollection<string> CarLsit { get; set; } = new ObservableCollection<string>();//{"Skoda Octavia", "VW Golf", "VW Caddy", "VW Transporter"};
+        public ObservableCollection<string> TypeList { get; set; } = new ObservableCollection<string>(); //{ "1) Oprava Serveru", "2) Schuzka se zakaznikem", "3) Interni IT", "4) Kontrola Serveru" };
 
     }
 }

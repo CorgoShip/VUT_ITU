@@ -8,6 +8,7 @@ using Xamarin.Forms;
 using System.Windows.Input;
 using System.Collections.ObjectModel;
 using App1.Services;
+using System.Linq;
 
 namespace App1.Services
 {
@@ -41,7 +42,8 @@ namespace App1.Services
                 temp.Vehicle = attributes[2];
                 temp.Date = attributes[3];
                 temp.Time = attributes[4];
-                rezervace.Add(temp);               
+                rezervace.Add(temp);
+               
             }
 
             return rezervace;
